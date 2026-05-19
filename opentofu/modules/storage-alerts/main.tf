@@ -21,11 +21,11 @@ resource "azurerm_monitor_metric_alert" "used_capacity" {
   window_size         = "PT1H"
 
   criteria {
-    metric_namespace = "Microsoft.Storage/storageAccounts"
-    metric_name      = "UsedCapacity"
-    aggregation      = "Average"
-    operator         = "GreaterThan"
-    threshold        = var.used_capacity_threshold_bytes
+    metric_namespace       = "Microsoft.Storage/storageAccounts"
+    metric_name            = "UsedCapacity"
+    aggregation            = "Average"
+    operator               = "GreaterThan"
+    threshold              = var.used_capacity_threshold_bytes
     skip_metric_validation = true
   }
 

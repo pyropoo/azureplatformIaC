@@ -5,7 +5,7 @@ resource "azurerm_storage_account" "this" {
   account_tier             = var.account_tier
   account_replication_type = var.account_replication_type
 
-  min_tls_version           = var.min_tls_version
+  min_tls_version               = var.min_tls_version
   public_network_access_enabled = var.public_network_access_enabled
 
   tags = var.tags
