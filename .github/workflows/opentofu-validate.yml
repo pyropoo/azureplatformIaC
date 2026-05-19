@@ -20,7 +20,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: opentofu/environments/dev
+        working-directory: opentofu/environments/internal
 
     steps:
       - name: Checkout repository
