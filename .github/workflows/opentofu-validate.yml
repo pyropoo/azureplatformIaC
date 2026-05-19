@@ -1,0 +1,41 @@
+name: OpenTofu Validate
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - develop
+      - "feature/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate OpenTofu
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: opentofu/environments/dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: 1.8.3
+
+      - name: Check formatting
+        run: tofu fmt -check -recursive ../../
+
+      - name: Initialize OpenTofu
+        run: tofu init -backend=false
+
+      - name: Validate OpenTofu
+        run: tofu validate
